@@ -1,0 +1,152 @@
+header{
+    margin-left: 15%;
+    width: 70%;
+    min-width: 60%;
+    height: 250px;
+    background-color: url(img/header_w.png);   
+}
+header .cont_header_1{
+    width: 100%;
+    height: 200px;
+}
+header .cont_header_2{
+    width: 100%;
+    height: 50px;
+}
+header div{
+    float:left;
+    
+}
+header .h11{
+    width: 20%;
+    height: inherit;
+}
+header .h12{    
+    width: 50%;
+    height: inherit;
+}
+header .h13{
+    width: 30%;
+    height: inherit;
+}
+header .h13 img{
+  
+    height: 150px;
+}
+.h11 img {
+    height: 150px;
+    width: 150px;
+}
+
+header .cont_header_2 div{
+    float: right;
+}
+
+
+/* MIEMBROS */
+.miembros .contenedor_miembros{
+    
+    height: 1000px;
+    width: 70%;
+    min-width: 60%;
+    background-color: gainsboro;
+    margin-left: 15%;
+}
+
+/* Características contenedor de miembro*/
+.miembro {
+    
+    height: 200px;
+    width: 45%;
+    margin-left: 0%;
+    background-image: url(img/wallp.png);
+    border: 1px solid black; 
+    border-radius: 5px;
+    
+}
+
+.miembros .contenedor_generico #1{
+    margin-top:5%;
+}
+
+/* Características de los contenedores pequeños m1 m2 m3 y m4*/
+.miembro .m1 {
+    height: inherit;
+    width: 20%;    
+    float:left;
+}
+.miembro .m2 {
+
+    height: inherit;
+    width: 20%;
+    float:left;
+}
+.miembro .m3 {
+    
+    height: inherit;
+    width: 35%;
+    float:left;
+    
+}
+.miembro .m4 {
+    
+    height: inherit;
+    width: 25%;
+    float:left;
+    background-color: ##70C0FF;
+}
+/* FOTO MIEMBRO M1 */
+.miembro .m1 img{
+    
+    height: 140px;
+    width: 136px;
+    float: left;
+    border: 1px solid black;
+}
+
+.miembro .m1 #bloque_azul{
+    
+    height: 140px;
+    width: 15px;
+    background-color:cornflowerblue;
+    float:left;
+}
+
+.m1 #bloque_azul, .m1 img{
+    
+    margin-top: 10%;
+    margin-left: 10%;
+}
+
+/* DATOS MIEMBRO M2 */
+.m2{
+    font-family: cursive; 
+}
+
+.m2 p.primero{
+    
+    margin-top: 10%;
+}
+
+/* FOTO FONDO M3 */
+
+.m3 img{
+    overflow: hidden; 
+    height: 100%;
+    width: 80%;
+    
+}
+
+/* BOTONES GESTION MIEMBROS M4 */
+
+.m4 button {
+    margin-left: 20%;
+    width: 60%;  
+    height: 40px;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+
+.m4 .añadir{
+    margin-top: 10%;
+}
