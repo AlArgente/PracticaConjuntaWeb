@@ -1,0 +1,5 @@
+Contenedor genérico de cada parte:
+
+    header-> contenedor_header
+    nav -> contenedor_nav 
+    etc...
