@@ -55,7 +55,7 @@ header div{
     width: 15px;
     margin-top: 12px;
     margin-left: 10px;
-    background-color: cornflowerblue;
+    background-color: #2F67A5;
     float:left;
 }
 .h12 #h12_p1{
@@ -69,7 +69,7 @@ header div{
 .h12 .linea{
     width: 450px;
     height: 5px;
-    background-color: cornflowerblue;
+    background-color: #2F67A5;
 }
 .h13 img{
     margin-top: 20px;
@@ -124,12 +124,17 @@ header div{
 .cont_body .body_left{
     height: 600px;
     width: 15%;
-    background-color: chartreuse;
+    background-color: #B3CACB;
 }
 .cont_body .body_right{
     height: 600px;
     width: 85%;
-    background-color: crimson;
+    /*background-color: white;*/
+    background: rgb(211,238,251);
+background: -moz-linear-gradient(top, rgba(211,238,251,1) 0%, rgba(233,246,253,1) 100%);
+background: -webkit-linear-gradient(top, rgba(211,238,251,1) 0%,rgba(233,246,253,1) 100%);
+background: linear-gradient(to bottom, rgba(211,238,251,1) 0%,rgba(233,246,253,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d3eefb', endColorstr='#e9f6fd',GradientType=0 );
 }
 .cont_body .body_left, .cont_body .body_right{
     /* Contenedor izquierdo y derecho del body flotantes*/
@@ -152,7 +157,7 @@ nav ul li {
     padding-left: 0px;
     /*margin-right: 10px;*/
     width: 180px;
-    background-color: pink;
+    background-color: #8BC4E3;
     border-bottom-color: aliceblue;
     border-bottom: 1px solid;
 }
@@ -164,7 +169,7 @@ nav ul li a {
 }
 
 nav ul li:hover{
-    background-color: white;
+    background-color: #B3CACB;
 }
 /**********************************MIEMBROS***********************************/
 
@@ -272,7 +277,12 @@ footer {
     height: 175px;
     width: 1200px;
     margin-left: 15%;
-    background-color: deeppink;
+    border-top: #2F67A5 10px solid;
+    /* FONDO DEGRADADO */
+    background: -moz-linear-gradient(top, rgba(30,87,153,1) 0%, rgba(125,185,232,0.99) 1%, rgba(125,185,232,0) 100%);
+    background: -webkit-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(125,185,232,0.99) 1%,rgba(125,185,232,0) 100%);
+    background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(125,185,232,0.99) 1%,rgba(125,185,232,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#007db9e8',GradientType=0 );
 }
 
 footer .f1{
@@ -293,7 +303,7 @@ footer .f1 .linea{
     width: 15px;
     margin-top: 12px;
     margin-left: 10px;
-    background-color: cornflowerblue;
+    background-color: #2F67A5;
     float:left;
 }
 
@@ -335,10 +345,10 @@ footer ul li a:hover {
 }
 
 .f2 #f12_p1 {
-    margin-top: 80px;
-    font-size: 20px;
+    margin-top: 40px;
+    font-size: 25px;
     margin-bottom: 5px;
-    color: white;
+    color: black;
 }
 
 
@@ -352,8 +362,9 @@ footer ul li a:hover {
 }
 
 .f3 img {
+    width: 75%;
     float: right;
     padding-left: 80px;
     margin-right: 20px;
-    margin-top: 50px;
+    margin-top: 40px;
 }
