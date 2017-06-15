@@ -1,3 +1,6 @@
+body{
+    margin:0px;
+}
 /**********************************HEADER***********************************/
 header{
     
@@ -8,7 +11,8 @@ header{
 header .cont_header_1{
     height: 175px;
     width: 1200px;
-    background-color: red;
+    border-right: 2px solid aqua;
+    border-left: 2px solid aqua;
 }
 header .cont_header_2{
     width: 1200px;
@@ -21,18 +25,19 @@ header div{
 /* DIVS H11/12/13*/
 .h11{
     height: 175px;
-    width: 30%;
+    width: 20%;
     float: left;
 }
 .h12{
     height: 175px;
     width: 50%;
     float: left;
-    padding-top: 50px;
+    font-family: cursive;
 }
+
 .h13{
     height: 175px;
-    width: 20%;
+    width: 30%;
     float: left;
     padding-bottom: 20px;
 }
@@ -42,10 +47,31 @@ header div{
     padding-top: 12px;
     height: 150px;
     width: 150px;
+    float:left;
+}
+.h11 .linea{
+    height: 150px;
+    width: 15px;
+    margin-top: 12px;
+    margin-left: 10px;
+    background-color: cornflowerblue;
+    float:left;
+}
+.h12 #h12_p1{
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+.h12 #h12_p2{
+    margin-top: 0px;
+}
+.h12 .linea{
+    width: 450px;
+    height: 5px;
+    background-color: cornflowerblue;
 }
 .h13 img{
-    padding-top: 33px;
-    height: 100px;
+    margin-top: 20px;
+    height: 130px;
 }
 /* DIVS H21/22*/
 .h21 {
