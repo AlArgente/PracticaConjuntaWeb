@@ -137,11 +137,34 @@ header div{
 }
 /**********************************NAV***********************************/
 nav {
-    margin-left: 15%;
     width: 20%;
+    height: 600px;
 }
 nav ul {
+    padding: 0;
+    margin: 0;
     list-style-type: none;
+}
+
+nav ul li {
+   /* margin: 5px;*/
+    padding: 10px;
+    padding-left: 0px;
+    /*margin-right: 10px;*/
+    width: 180px;
+    background-color: pink;
+    border-bottom-color: aliceblue;
+    border-bottom: 1px solid;
+}
+
+nav ul li a {
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+nav ul li:hover{
+    background-color: white;
 }
 /**********************************MIEMBROS***********************************/
 
@@ -250,4 +273,87 @@ footer {
     width: 1200px;
     margin-left: 15%;
     background-color: deeppink;
+}
+
+footer .f1{
+    height: 175px;
+    width: 20%;
+    float: left;
+}
+
+footer .f1 img {
+    padding-left: 25px;
+    padding-top: 12px;
+    height: 150px;
+    width: 150px;
+    float:left;
+}
+footer .f1 .linea{
+    height: 150px;
+    width: 15px;
+    margin-top: 12px;
+    margin-left: 10px;
+    background-color: cornflowerblue;
+    float:left;
+}
+
+footer ul {
+
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer li {
+    float: left;
+    margin: 3px;
+    list-style-type: none;
+}
+
+footer ul li a {
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+footer ul li a:hover {
+    background-color: white;
+}
+
+/** F2 **/
+.f2 {
+    height: 175px;
+    width: 50%;
+    float: left;
+    font-family: cursive;
+}
+
+.f2 .linea{
+    width: 350px;
+    height: 5px;
+    background-color: cornflowerblue;
+}
+
+.f2 #f12_p1 {
+    margin-top: 80px;
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: white;
+}
+
+
+
+/** F3  **/
+
+.f3 {
+    height: 175px;
+    width: 30%;
+    float: left;
+}
+
+.f3 img {
+    float: right;
+    padding-left: 80px;
+    margin-right: 20px;
+    margin-top: 50px;
 }
