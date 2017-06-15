@@ -17,8 +17,8 @@ header .cont_header_2{
     width: 1200px;
     height: 40px;
     background: url(img/h2_w.png);
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    border-top: 1px solid #2F67A5;
+    border-bottom: 1px solid #2F67A5;
 }
 header div{
     float:left;
@@ -47,6 +47,7 @@ header div{
     padding-left: 25px;
     padding-top: 12px;
     height: 150px;
+    width: 150px;
     float:left;
 }
 .h11 .linea{
@@ -54,7 +55,7 @@ header div{
     width: 15px;
     margin-top: 12px;
     margin-left: 10px;
-    background-color: cornflowerblue;
+    background-color: #2F67A5;
     float:left;
 }
 .h12 #h12_p1{
@@ -68,7 +69,7 @@ header div{
 .h12 .linea{
     width: 450px;
     height: 5px;
-    background-color: cornflowerblue;
+    background-color: #2F67A5;
 }
 .h13 img{
     margin-top: 20px;
@@ -93,7 +94,7 @@ header div{
     margin-right: 5px;
     margin-top:10px;
     font-family: cursive;
-    
+    color: #1E5799;
 }
 
 /* ELEMENTOS DE DIV H21 H22*/
@@ -120,26 +121,26 @@ header div{
     width: 1200px;
     margin-left: 15%;
 }
-.cont_body .body_left, .cont_body .body_right{
-    /* Contenedor izquierdo y derecho del body flotantes*/
-    float:left;
-}
 .cont_body .body_left{
     height: 600px;
     width: 15%;
     background-color: #B3CACB;
 }
 .cont_body .body_right{
-   /* height: 600px;*/
-    height: auto;
+    height: 600px;
+    /*height: auto;*/
     width: 85%;
     overflow: scroll;
     /*background-color: white;*/
     background: rgb(211,238,251);
-    background: -moz-linear-gradient(top, rgba(211,238,251,1) 0%, rgba(233,246,253,1) 100%);
-    background: -webkit-linear-gradient(top, rgba(211,238,251,1) 0%,rgba(233,246,253,1) 100%);
-    background: linear-gradient(to bottom, rgba(211,238,251,1) 0%,rgba(233,246,253,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d3eefb', endColorstr='#e9f6fd',GradientType=0 );
+background: -moz-linear-gradient(top, rgba(211,238,251,1) 0%, rgba(233,246,253,1) 100%);
+background: -webkit-linear-gradient(top, rgba(211,238,251,1) 0%,rgba(233,246,253,1) 100%);
+background: linear-gradient(to bottom, rgba(211,238,251,1) 0%,rgba(233,246,253,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d3eefb', endColorstr='#e9f6fd',GradientType=0 );
+}
+.cont_body .body_left, .cont_body .body_right{
+    /* Contenedor izquierdo y derecho del body flotantes*/
+    float:left;
 }
 /**********************************NAV***********************************/
 nav {
@@ -172,6 +173,7 @@ nav ul li:hover{
     background-color: #B3CACB;
 }
 /**********************************MIEMBROS***********************************/
+
 .cont_miembros{
     height: auto;
     width: 100%;
@@ -250,7 +252,6 @@ nav ul li:hover{
 .m1 img{
     margin-top: 15%;
     margin-left: 15%;
-    mix-blend-mode: multiply;
 }
 /* DATOS MIEMBRO M2 */
 .m2 p.primero{
@@ -269,41 +270,7 @@ nav ul li:hover{
 .m3 .añadir{
     margin-top: 15%;
 }
-/*********************************PRINCIPAL*********************************/
-.body_right .cont_left{
-    
-    height: 600px;
-    width: 70%;
-    float:left;    
-}
-.body_right .cont_right{
-    
-    height: 600px;
-    width: 30%;
-    overflow: hidden;
-    float:left;
-}
 
-.body_right .cont_left .cont_text{
-    height: 95%;
-    width: 90%;
-    padding-left: 5%;
-    padding-right: 5%;
-}
-
-.cont_left .cont_text p{
-    margin:0px;
-}
-
-.cont_left .cont_text img{
-    margin-top: 10px;
-    margin-left: 30%;
-    height: 200px;
-}
-.cont_right img.foto_etsiit{
-    height: 650px;
-   
-}
 /**********************************FOOTER***********************************/
 
 
