@@ -1,186 +1,200 @@
+/**********************************HEADER***********************************/
 header{
+    
+    height: 215px;
+    width: 1200xp;
     margin-left: 15%;
-    width: 1000px;
-    /*width: 70%*/
-    min-width: 60%;
-    height: 250px;
-    background-color: url(img/header_w.png);
 }
 header .cont_header_1{
-    width: 100%;
     height: 175px;
+    width: 1200px;
     background-color: red;
 }
 header .cont_header_2{
-    width: 100%;
-    height: 50px;
+    width: 1200px;
+    height: 40px;
+    background-color: aqua;
 }
 header div{
     float:left;
-
 }
-header .h11{
+/* DIVS H11/12/13*/
+.h11{
+    height: 175px;
     width: 30%;
     float: left;
-    height: inherit;
 }
-header .h12{
+.h12{
+    height: 175px;
     width: 50%;
     float: left;
     padding-top: 50px;
 }
-header .h13{
+.h13{
+    height: 175px;
     width: 20%;
     float: left;
-    height: inherit;
     padding-bottom: 20px;
 }
-header .h13 img{
-    padding-top: 33px;
-    height: 100px;
-}
+/* ELEMENTOS DE DIV H11/12/13*/
 .h11 img {
     padding-left: 25px;
     padding-top: 12px;
     height: 150px;
     width: 150px;
 }
-
-header .cont_header_2 div{
-    float: left;
-    background-color: cornflowerblue;
+.h13 img{
+    padding-top: 33px;
+    height: 100px;
 }
-
-header .h21 {
-    padding-left: 55%;
+/* DIVS H21/22*/
+.h21 {
+    height: 40px;
+    width: 50%;
 }
-header .h22 {
-    padding-top: 12px;
-    padding-left: 10px;
+.h22 {
+    height: 40px;
+    width: 50%;
 }
-
-
-/* NAV */
-
+/* ELEMENTOS DE DIV H21 H22*/
+.h22 input{
+    /* Mostrar en 1 linea ambos inputs*/
+    display:inline;
+}
+/*********************************CUERPO***********************************/
+/* Cuerpo contiene a NAV y otro DIV dependiendo de la página*/
+.cont_body{
+    height: 600px;
+    width: 1200px;
+    margin-left: 15%;
+}
+.cont_body .body_left{
+    height: 600px;
+    width: 15%;
+    background-color: chartreuse;
+}
+.cont_body .body_right{
+    height: 600px;
+    width: 85%;
+    background-color: crimson;
+}
+.cont_body .body_left, .cont_body .body_right{
+    /* Contenedor izquierdo y derecho del body flotantes*/
+    float:left;
+}
+/**********************************NAV***********************************/
 nav {
     margin-left: 15%;
     width: 20%;
 }
-
 nav ul {
     list-style-type: none;
 }
+/**********************************MIEMBROS***********************************/
 
-/* MIEMBROS */
-.miembros .contenedor_miembros{
-
-    height: 1000px;
-    width: 70%;
+.cont_miembros{
+    height: auto;
+    width: 100%;
     min-width: 60%;
-    background-color: gainsboro;
-    margin-left: 15%;
+    margin-left: 5%;
+    margin-top: 4   %;
+}
+.cont_miembros_left{
+    height: 600px;
+    width: 45%;
+    float:left;
+}
+.cont_miembros_right{
+    height: 600px;
+    width: 45%;
+    float:left;
 }
 
 /* Características contenedor de miembro*/
 .miembro {
-
-    height: 200px;
-    width: 45%;
-    margin-left: 0%;
+    height: 150px;
+    width: 98%;
     background-image: url(img/wallp.png);
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     border-radius: 5px;
-
 }
 
-.miembros .contenedor_generico #1{
-    margin-top:5%;
+.cont_miembros_left .miembro{   
+    margin-top:2%;
+    margin-bottom: 2%;
 }
-
+.cont_miembros_right .miembro{
+    margin-left: 2%;
+    margin-top:2%;
+    margin-bottom: 2%;
+}
 /* Características de los contenedores pequeños m1 m2 m3 y m4*/
 .miembro .m1 {
-    height: inherit;
-    width: 20%;
+    height: 150px;
+    width: 35%;
     float:left;
 }
 .miembro .m2 {
-
-    height: inherit;
-    width: 20%;
+    height: 150px;
+    width: 30%;
     float:left;
+    
+    font-family: cursive;
+    font-size: 12px;
 }
 .miembro .m3 {
-
-    height: inherit;
+    height: 150px;
     width: 35%;
-    float:left;
-
-}
-.miembro .m4 {
-
-    height: inherit;
-    width: 25%;
     float:left;
     background-color: ##70C0FF;
 }
 /* FOTO MIEMBRO M1 */
 .miembro .m1 img{
-
-    height: 140px;
-    width: 136px;
+    height: 80px;
+    width: 76px;
     float: left;
     border: 1px solid black;
 }
-
 .miembro .m1 #bloque_azul{
-
-    height: 140px;
-    width: 15px;
+    height: 81px;
+    width: 10px;
     background-color:cornflowerblue;
     float:left;
 }
-
-.m1 #bloque_azul, .m1 img{
-
-    margin-top: 10%;
+.m1 #bloque_azul{
+    
+    margin-top: 15%;
     margin-left: 10%;
-}
+} 
 
+.m1 img{
+    margin-top: 15%;
+    margin-left: 15%;
+}
 /* DATOS MIEMBRO M2 */
-.m2{
-    font-family: cursive;
-}
-
 .m2 p.primero{
-
-    margin-top: 10%;
+    margin-top: 15%;
 }
+/* BOTONES GESTION MIEMBROS M3 */
 
-/* FOTO FONDO M3 */
-
-.m3 img{
-    overflow: hidden;
-    height: 100%;
-    width: 80%;
-
-}
-
-/* BOTONES GESTION MIEMBROS M4 */
-
-.m4 button {
-    margin-left: 20%;
+.m3 button {
+    margin-left: 15%;
     width: 60%;
-    height: 40px;
+    height: 30px;
     margin-top: 2.5%;
     margin-bottom: 2.5%;
 }
 
-.m4 .añadir{
-    margin-top: 10%;
+.m3 .añadir{
+    margin-top: 15%;
 }
 
-/* FOOTER */
+/**********************************FOOTER***********************************/
+
 
 footer {
-    width: 100%;
+    height: 175px;
+    width: 1200px;
+    margin-left: 15%;
+    background-color: deeppink;
 }
