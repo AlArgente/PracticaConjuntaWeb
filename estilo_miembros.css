@@ -11,13 +11,14 @@ header{
 header .cont_header_1{
     height: 175px;
     width: 1200px;
-    border-right: 2px solid aqua;
-    border-left: 2px solid aqua;
+    background: url(img/header_w.png);
 }
 header .cont_header_2{
     width: 1200px;
     height: 40px;
-    background-color: aqua;
+    background: url(img/h2_w.png);
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }
 header div{
     float:left;
@@ -60,6 +61,7 @@ header div{
 .h12 #h12_p1{
     font-size: 25px;
     margin-bottom: 5px;
+    color:white;
 }
 .h12 #h12_p2{
     margin-top: 0px;
@@ -76,16 +78,41 @@ header div{
 /* DIVS H21/22*/
 .h21 {
     height: 40px;
-    width: 50%;
+    width: 63%;
 }
 .h22 {
     height: 40px;
-    width: 50%;
+    width: 30.5%;
 }
+.h23 {
+    height: 40px;
+    width: 5%;
+    float:left;
+}
+.h21 p{
+    float:right;
+    margin-right: 5px;
+    margin-top:10px;
+    font-family: cursive;
+    
+}
+
 /* ELEMENTOS DE DIV H21 H22*/
 .h22 input{
     /* Mostrar en 1 linea ambos inputs*/
     display:inline;
+    height: 20px;
+    width: 170px;
+    margin-top: 8px;
+}
+
+.h23 button{
+    height: 25px;
+    width: 25px;
+    margin-top: 8px;
+    border: none;
+    background: url( img/boton_login.png) no-repeat top left;
+        
 }
 /*********************************CUERPO***********************************/
 /* Cuerpo contiene a NAV y otro DIV dependiendo de la página*/
@@ -123,7 +150,7 @@ nav ul {
     width: 100%;
     min-width: 60%;
     margin-left: 5%;
-    margin-top: 4   %;
+    margin-top: 3   %;
 }
 .cont_miembros_left{
     height: 600px;
