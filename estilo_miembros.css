@@ -17,8 +17,8 @@ header .cont_header_2{
     width: 1200px;
     height: 40px;
     background: url(img/h2_w.png);
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    border-top: 1px solid #2F67A5;
+    border-bottom: 1px solid #2F67A5;
 }
 header div{
     float:left;
@@ -94,7 +94,7 @@ header div{
     margin-right: 5px;
     margin-top:10px;
     font-family: cursive;
-    
+    color: #1E5799;
 }
 
 /* ELEMENTOS DE DIV H21 H22*/
@@ -158,8 +158,7 @@ nav ul li {
     /*margin-right: 10px;*/
     width: 180px;
     background-color: #8BC4E3;
-    border-bottom-color: aliceblue;
-    border-bottom: 1px solid;
+    border-bottom: #2F67A5 1px solid;
 }
 
 nav ul li a {
@@ -339,9 +338,9 @@ footer ul li a:hover {
 }
 
 .f2 .linea{
-    width: 350px;
+    width: 400px;
     height: 5px;
-    background-color: cornflowerblue;
+    background-color: #2F67A5;
 }
 
 .f2 #f12_p1 {
