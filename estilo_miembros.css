@@ -133,6 +133,7 @@ header div{
    /* height: 600px;*/
     height: auto;
     width: 85%;
+    overflow: scroll;
     /*background-color: white;*/
     background: rgb(211,238,251);
     background: -moz-linear-gradient(top, rgba(211,238,251,1) 0%, rgba(233,246,253,1) 100%);
