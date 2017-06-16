@@ -373,7 +373,48 @@ footer ul li a:hover {
 
 
 /**********************************PROYECTOS***********************************/
-
-.proyectos {
-    margin-bottom: 20px;
+/**TEXTO CONTENIDO PROYECTO**/
+#contProy {
+    font-size: 20px;
+    margin-left: 10px;
 }
+
+/**CAJA PROYECTO**/
+
+.proyecto {
+    margin-left: 20px;
+    background-color: #8BC4E3;
+    width: 55%;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    margin-top: 10px;
+}
+
+.proyecto ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.proyecto ul li span {
+    margin-left: 15px;
+}
+
+.proyecto table, td, th {
+    border: 1px solid black;
+}
+
+.proyecto table {
+    border-collapse: collapse;
+    width: 90%;
+    text-align: left;
+}
+
+.proyecto table th {
+    height: 25px;
+}
+
+.proyecto table a {
+    text-decoration: none;
+    color: black;
+}
+
