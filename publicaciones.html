@@ -47,11 +47,11 @@
 
         <div class="cont_body">
             <div class="body_left">
-                <!-- NAVAGATION -->
+                 <!-- NAVAGATION -->
                 <nav>
                     <div class="cont_lista">
                         <ul>
-                            <li><a href="index.html">Inicio</a></li>
+                            <li><a class="primero" href="index.html">Inicio</a></li>
                             <li><a href="miembros.html">Miembros</a></li>
                             <li><a href="publicaciones.html">Publicación</a></li>
                             <li><a href="proyectos.html">Proyectos</a></li>
@@ -71,32 +71,71 @@
             </div>
             
             <div class="body_right">
-                <!--PRINCIPAL-->
-                <div class="cont_principal">
-                    <div class="cont_left">
-                        <div class="cont_text">
-
-                            <h1>¿Quienes somos?</h1>
-                            <p class="descripcion">SARG (Sentiment Analysis Research Group) es un grupo de investigación en el campo de la Ciencia de Datos enfocado a la extracción y análisis de los sentimientos procedentes de un texto.
-
-                            El grupo está actualmente estudiando algoritmos de aprendizaje automático para buscar aquellos que den mejores resultados en la extracción de sentimientos a nivel de aspecto. Por otro lado, la extracción y selección de las características que permiten entrenar estos modelos son un tema de gran interés.
-
-                            El grupo está compuesto por 7 integrantes, miembros del departamento de Ciencias de la Computación e Inteligencia Artificial de la Universidad de Granada.</p>
-
-                            <h1>Análisis de Sentimientos</h1>
-                            <p> El análisis de sentimientos es el procesamiento del lenguaje natural y análisis del texto que nos permite extraer información subjetiva procedente del texto fuente o corpus. Desde el punto de vista de la minería de datos, el análisis de sentimientos es una tarea de clasificación masiva de documentos de manera automática en función de la connotación postiva o negativa del lenguaje del documento. </p>
-
-                            <img src="img/pic_principal_PNG.png">
+                <div class="cont_publi">
+                    <div class="p1">
+                        <p class="contenido"> PUBLICACIONES</p>
+                        <!-- TITULO -->
+                        <div class="p11">
+                            <p>Buscar por:</p>
+                        </div>
+                        <!-- INPUTS y SELECT -->
+                        <div class="p12">
+                            <ul>
+                                <li>
+                                    <p>Año de inicio:</p>
+                                    <input type="text"> 
+                                </li>
+                                <li>
+                                    <p>Año de finalización:</p>
+                                    <input type="text">
+                                </li>
+                                <li>
+                                    <p>Título:</p>
+                                    <input type="text">
+                                </li>
+                                <li>
+                                    <p>Investigador:</p>
+                                    <select></select>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- BOTONES -->
+                        <div class="p13">
+                            <button>Borrar</button>
+                            <button>Buscar</button>
                         </div>
                     </div>
-                    <div class="cont_right">
-                        <img class="foto_etsiit" src="img/etsiit2.png"s>
+                    <!-- LISTADO DE PUBLICACIONES -->
+                    <div class="p2">
+                        <p> LISTA DE PROYECTOS</p>
+                        <table>
+                            <tr>
+                                <th>Nombre proyecto</th>
+                                <th>Fecha inicio</th> 
+                                <th>Fecha finalización</th>
+                            </tr>
+                            <tr>
+                                <td>Proyecto 1: Extracción de características con métodos lexicon-based.</td>
+                                <td>2015</td> 
+                                <td>2018</td>
+                            </tr>
+                            <tr>
+                                <td>Proyecto 2: Estudio de los algoritmos de clasificación en Sentiment Analysis.</td>
+                                <td>2014</td> 
+                                <td>2017</td>
+                            </tr>
+                            <tr>
+                                <td>Proyecto 3: Caso de estudio: Alhambra, extracción del conocimiento de reviews de TripAdvisor.</td>
+                                <td>2014</td> 
+                                <td>2017</td>
+                            </tr>
+                        </table>
                     </div>
-                </div>                
+                </div>
             </div>
         </div>
         <!--FOOTER-->
-        <footer>
+         <footer>
             <div class="f1">
                 <img src="img/word_cloud_footer.png" alt="logo SARG">
                 <!--LINEA VERTICAL DE SEPARACIÓN-->

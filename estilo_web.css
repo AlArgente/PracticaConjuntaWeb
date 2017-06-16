@@ -17,8 +17,8 @@ header .cont_header_2{
     width: 1200px;
     height: 40px;
     background: url(img/h2_w.png);
-    border-top: 1px solid #2F67A5;
-    border-bottom: 1px solid #2F67A5;
+    border-top: 3px solid #2F67A5;
+    border-bottom: 3px solid #2F67A5;
 }
 header div{
     float:left;
@@ -99,11 +99,12 @@ header div{
 
 /* ELEMENTOS DE DIV H21 H22*/
 .h22 input{
-    /* Mostrar en 1 linea ambos inputs*/
-    display:inline;
+    
     height: 20px;
     width: 170px;
     margin-top: 8px;
+    /* Mostrar en 1 linea ambos inputs*/
+    display:inline;
 }
 
 .h23 button{
@@ -130,13 +131,12 @@ header div{
     height: 600px;
     /*height: auto;*/
     width: 85%;
-    overflow: scroll;
     /*background-color: white;*/
     background: rgb(211,238,251);
-background: -moz-linear-gradient(top, rgba(211,238,251,1) 0%, rgba(233,246,253,1) 100%);
-background: -webkit-linear-gradient(top, rgba(211,238,251,1) 0%,rgba(233,246,253,1) 100%);
-background: linear-gradient(to bottom, rgba(211,238,251,1) 0%,rgba(233,246,253,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d3eefb', endColorstr='#e9f6fd',GradientType=0 );
+    background: -moz-linear-gradient(top, rgba(211,238,251,1) 0%, rgba(233,246,253,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(211,238,251,1) 0%,rgba(233,246,253,1) 100%);
+    background: linear-gradient(to bottom, rgba(211,238,251,1) 0%,rgba(233,246,253,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d3eefb', endColorstr='#e9f6fd',GradientType=0 );
 }
 .cont_body .body_left, .cont_body .body_right{
     /* Contenedor izquierdo y derecho del body flotantes*/
@@ -152,7 +152,6 @@ nav ul {
     margin: 0;
     list-style-type: none;
 }
-
 nav ul li {
    /* margin: 5px;*/
     padding: 10px;
@@ -160,26 +159,58 @@ nav ul li {
     /*margin-right: 10px;*/
     width: 170px;
     background-color: #8BC4E3;
-    border-bottom: #2F67A5 1px solid;
+    border-bottom: #2F67A5 2px solid;
+    text-align: center;
 }
-
 nav ul li a {
     padding: 10px;
     text-decoration: none;
-    color: black;
+    color: #1E5799;
+    font-family: cursive;
 }
-
 nav ul li:hover{
     background-color: #B3CACB;
 }
-/**********************************MIEMBROS***********************************/
-
-.cont_miembros{
-    height: auto;
+/**********************************PRICIPAL***********************************/
+/* Contenedor genérico independiente del común a todas las páginas */
+.cont_principal {
     width: 100%;
-    min-width: 60%;
+    height: auto;
+    overflow:hidden;    
+}
+/* Contenedor con texto de presentación del grupo*/
+.body_right .cont_left{
+    width: 60%;
+    height: 600px;
+    float: left;
+}
+/* Contenedor con imagen que acompaña al texto de presentación*/
+.body_right .cont_right{
+    width: 40%;
+    height: 600px;
+    float: left;
+}
+.cont_left .cont_text{   
+    width: 90%;
+    height: 600px;
     margin-left: 5%;
-    margin-top: 3   %;
+}
+/* IMAGEN WORDCLOUD */
+.body_right .cont_left img{
+    
+    height: 160px;
+    margin-left: 25%;
+}
+/* IMAGEN ETSIIT */
+.body_right .cont_right img{
+    width: 410px;
+}
+/**********************************MIEMBROS***********************************/
+.cont_miembros{
+    height: 600px;
+    width: 100%;
+    min-width: 60%; 
+    overflow: scroll;
 }
 .cont_miembros_left{
     height: 600px;
@@ -258,7 +289,6 @@ nav ul li:hover{
     margin-top: 15%;
 }
 /* BOTONES GESTION MIEMBROS M3 */
-
 .m3 button {
     margin-left: 15%;
     width: 60%;
@@ -266,33 +296,147 @@ nav ul li:hover{
     margin-top: 2.5%;
     margin-bottom: 2.5%;
 }
-
 .m3 .añadir{
     margin-top: 15%;
 }
+/******************************PUBLICACIONES*********************************/
+.body_right .cont_publi{
+    height: 600px;
+    width: 100%;
+    overflow: scroll;
+}
+/* DIV P1 con BUSQUEDA*/
+.cont_publi .p1{
+    width: 95%;
+    height: 40%;
+    border-bottom: 2px solid #2F67A5;
+    padding-left: 5%;
+     /* FONDO DEGRADADO */
+    background: -moz-linear-gradient(top, rgba(30,87,153,1) 0%, rgba(125,185,232,0.99) 1%, rgba(125,185,232,0) 100%);
+    background: -webkit-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(125,185,232,0.99) 1%,rgba(125,185,232,0) 100%);
+    background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(125,185,232,0.99) 1%,rgba(125,185,232,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#007db9e8',GradientType=0 );
+    /* FIN FONDO DEGRADADO */
+}
+.cont_publi .p1 p.contenido{
+    border-bottom: 3px dotted black;
+    width: 170px;
+    padding-top:2%;
+    margin:0px;
+}
+ul{
+    list-style-type: none;
+}
+.p12 ul li p, .p1 ul li input{
+    display: inline;
+}
+/* DIV P2 con LISTA PUBLICACIONES */
+.cont_publi .p2{
+    height:;
+    width: 95%;
+    padding-left: 5%;
+    padding-top: 3%;
+}
+.cont_publi .p2 p{
+    border-bottom: 3px dotted black;
+    width: 170px;
+    margin: 0px;
+}
 
+.cont_publi .p2 table{
+    width: 900px;
+    margin-top: 2%;
+}
+
+/**********************************PROYECTOS***********************************/
+/* Contenedor general que contiene los proyectos*/
+.body_right .cont_proyectos{
+    height: 600px;
+    width: 100%;
+    overflow: scroll;
+}
+/**TEXTO CONTENIDO PROYECTO**/
+#p_proy {
+    font-size: 20px;
+    margin-left: 10px;
+}
+/**CAJA PROYECTO**/
+
+.proyecto {
+    clear: both;
+    margin-left: 20px;
+    background-color: #8BC4E3;
+    width: 55%;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    margin-top: 10px;
+    float: left;
+}
+.proyecto ul {
+    list-style-type: none;
+    padding: 0;
+    float: left;
+    width: 60%;
+}
+.proyecto ul li span {
+    margin-left: 15px;
+}
+.proyecto table, td, th {
+    border: 1px solid black;
+}
+.proyecto table {
+    border-collapse: collapse;
+    width: 90%;
+    text-align: left;
+}
+.proyecto table th {
+    height: 25px;
+}
+.proyecto table a {
+    text-decoration: none;
+    color: black;
+}
+/************************************ADDQUITPROY*****************************/
+.body_right .cont_mod_proy{
+    height: 600px;
+    width: 100%;
+    overflow: scroll;
+}
+
+.proyecto .proy1 {
+    width: 35%;
+    float: left;
+}
+/* BOTONES GESTION MIEMBROS M3 */
+.proyecto .proy1 button {
+    margin-left: 15%;
+    width: 60%;
+    height: 30px;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+.proyecto .proy1 .añadir{
+    margin-top: 15%;
+}
 /**********************************FOOTER***********************************/
-
-
 footer {
     clear: both;
     height: 175px;
     width: 1200px;
     margin-left: 15%;
-    border-top: #2F67A5 10px solid;
+    border-top: #2F67A5 3px solid;
     /* FONDO DEGRADADO */
     background: -moz-linear-gradient(top, rgba(30,87,153,1) 0%, rgba(125,185,232,0.99) 1%, rgba(125,185,232,0) 100%);
     background: -webkit-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(125,185,232,0.99) 1%,rgba(125,185,232,0) 100%);
     background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(125,185,232,0.99) 1%,rgba(125,185,232,0) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#007db9e8',GradientType=0 );
+    /* FIN FONDO DEGRADADO */
 }
-
 footer .f1{
     height: 175px;
     width: 20%;
     float: left;
 }
-
 footer .f1 img {
     padding-left: 25px;
     padding-top: 12px;
@@ -308,136 +452,49 @@ footer .f1 .linea{
     background-color: #2F67A5;
     float:left;
 }
-
 footer ul {
-
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
-
 footer li {
     float: left;
     margin: 3px;
     list-style-type: none;
 }
-
 footer ul li a {
     padding: 10px;
     text-decoration: none;
     color: black;
 }
-
 footer ul li a:hover {
     background-color: #8BC4E3;
 }
-
 /** F2 **/
 .f2 {
     height: 175px;
-    width: 50%;
+    width: 40%;
     float: left;
     font-family: cursive;
 }
-
 .f2 .linea{
     width: 400px;
     height: 5px;
     background-color: #2F67A5;
 }
-
 .f2 #f12_p1 {
     margin-top: 40px;
     font-size: 25px;
     margin-bottom: 5px;
     color: black;
 }
-
-
-
 /** F3  **/
-
 .f3 {
     height: 175px;
-    width: 30%;
+    width: 40%;
     float: left;
 }
-
 .f3 img {
-    width: 75%;
-    float: right;
-    padding-left: 80px;
-    margin-right: 20px;
-    margin-top: 40px;
-}
-
-
-/**********************************PROYECTOS***********************************/
-/**TEXTO CONTENIDO PROYECTO**/
-#contProy {
-    font-size: 20px;
-    margin-left: 10px;
-}
-
-/**CAJA PROYECTO**/
-
-.proyecto {
-    clear: both;
-    margin-left: 20px;
-    background-color: #8BC4E3;
-    width: 55%;
-    padding-left: 20px;
-    padding-bottom: 20px;
-    margin-top: 10px;
-    float: left;
-}
-
-.proyecto ul {
-    list-style-type: none;
-    padding: 0;
-    float: left;
-    width: 60%;
-}
-
-.proyecto ul li span {
-    margin-left: 15px;
-}
-
-.proyecto table, td, th {
-    border: 1px solid black;
-}
-
-.proyecto table {
-    border-collapse: collapse;
-    width: 90%;
-    text-align: left;
-}
-
-.proyecto table th {
-    height: 25px;
-}
-
-.proyecto table a {
-    text-decoration: none;
-    color: black;
-}
-
-/************************************ADDQUITPROY*****************************/
-
-.proyecto .proy1 {
-    width: 35%;
-    float: left;
-}
-/* BOTONES GESTION MIEMBROS M3 */
-
-.proyecto .proy1 button {
-    margin-left: 15%;
-    width: 60%;
-    height: 30px;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
-}
-
-.proyecto .proy1 .añadir{
-    margin-top: 15%;
+    
+    width: 150px;
 }
