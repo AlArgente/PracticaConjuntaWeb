@@ -382,17 +382,21 @@ footer ul li a:hover {
 /**CAJA PROYECTO**/
 
 .proyecto {
+    clear: both;
     margin-left: 20px;
     background-color: #8BC4E3;
     width: 55%;
     padding-left: 20px;
     padding-bottom: 20px;
     margin-top: 10px;
+    float: left;
 }
 
 .proyecto ul {
     list-style-type: none;
     padding: 0;
+    float: left;
+    width: 60%;
 }
 
 .proyecto ul li span {
@@ -418,3 +422,22 @@ footer ul li a:hover {
     color: black;
 }
 
+/************************************ADDQUITPROY*****************************/
+
+.proyecto .proy1 {
+    width: 35%;
+    float: left;
+}
+/* BOTONES GESTION MIEMBROS M3 */
+
+.proyecto .proy1 button {
+    margin-left: 15%;
+    width: 60%;
+    height: 30px;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+
+.proyecto .proy1 .añadir{
+    margin-top: 15%;
+}
