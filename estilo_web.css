@@ -173,8 +173,8 @@ nav ul li:hover{
 }
 
 .activo { font-weight: bold; }
-nav .activo a:link {color: Black;}
-nav .activo a:hover { background-color: #B3CACB; }
+nav .activo { background-color: #B3CACB; }
+nav .activo:hover {background-color: #8BC4E3; }
 /**********************************PRICIPAL***********************************/
 /* Contenedor genérico independiente del común a todas las páginas */
 .cont_principal {

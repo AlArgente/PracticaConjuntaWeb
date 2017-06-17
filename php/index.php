@@ -8,11 +8,11 @@ $db = DB_conexion();
 if(!$db){
   echo 'No conexión';
 }
-if (!isset($_GET["nav"]))
-  $_GET['nav']=0;
-else if ($_GET["nav"]<0 || $_GET["nav"]>11)
-  $_GET['nav']=0;
-HTMLnav($_GET['nav']);
+if (!isset($_GET["p"]))
+  $_GET['p']=0;
+else if ($_GET["p"]<0 || $_GET["p"]>11)
+  $_GET['p']=0;
+HTMLnav($_GET['p']);
 /**Body_Right, el único que cambia**/
 switch ($_GET['p']) {
   case 0:HTMLindex();break;
