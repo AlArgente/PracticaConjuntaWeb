@@ -71,7 +71,7 @@ function HTMLnavbody(){
                       <li><a href="miembros.html">Miembros</a></li>
                       <li><a href="publicaciones.html">Publicación</a></li>
                       <li><a href="proyectos.html">Proyectos</a></li>
-                      <li><a href="addquitmembers.html">Añadir/Editar Publicación</a> </li>
+                      <li><a href="addquitpublis.html">Añadir/Editar Publicación</a> </li>
                       <li><a href="addquitproy.html">Añadir/Editar Proyecto</a> </li>
                       <li><a href="editmember.html">Editar usuarios</a> </li>
                       <li><a href="vlog.html">Ver log</a> </li>
@@ -85,6 +85,29 @@ function HTMLnavbody(){
               </div>
           </nav>
       </div>
+HTML;
+}
+
+function HTMLnav($activo){
+  echo <<< HTML
+  <div class="cont_body">
+      <div class="body_left">
+          <!-- NAVAGATION -->
+          <nav>
+              <div class="cont_lista">
+                  <ul>
+HTML;
+$items = ["Inicio","Miembros","Publicaciones","Proyectos","Añadir/Editar Publicaciones", "Añadir/Editar Proyectos","Editar Usuarios","Ver log","Realizar Backup", "Restaurar datos backup","PDF"];
+foreach ($items as $k => $v) {
+  echo "<li".($k==$activo?" class='activo'":"").">"."<a href='index.php?p=".($k)."'>".$v."</a></li>";
+}
+echo <<< HTML
+</ul></div>
+<div class="cont_user">
+    <!-- TODO -->
+</div>
+</nav>
+</div>
 HTML;
 }
 
