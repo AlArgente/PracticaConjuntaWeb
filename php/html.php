@@ -1,93 +1,93 @@
-<<?php
+<?php
 
-function HTMLinicio(){
+function HTMLpdf(){
   echo <<<HTML
-  <!DOCTYPE html>
-  <html lang="es">
-
-    <head>
-
-        <meta author="Jesús Sánchez de Castro y Alberto Argente del Castillo">
-        <meta charset="utf-8">
-        <title> SARG UGR</title>
-        <link rel="stylesheet" href="estilo_web.css">
-    </head>
-    <body>
-HTML;
-}
-
-function HTMLfin(){
-  echo <<<HTML
-  </body>
-   </html>
-HTML;
-}
-
-function HTMLcabecera(){
-  echo <<<HTML
-  <header>
-            <!-- Parte de logos y cabecera del header-->
-            <div class="cont_header_1">
-                <div class="h11">
-                    <img src="img/SARG_LOGO_NUEVO.png" alt="logo SARG">
-                    <div class="linea"></div>
-                </div>
-                <div class="h12">
-                    <p id="h12_p1"> Sentiment Analysis Research Group</p>
-                    <!-- Linea vertical de separación -->
-                    <div class="linea"></div><br>
-                    <p id="h12_p2"> SARG UGR</p>
-                </div>
-                <div class="h13">
-                    <img src="img/logo_ugr.png">
-                </div>
-            </div>
-            <!-- Parte de login del header -->
-            <div class="cont_header_2">
-                <div class="h21">
-                    <p>Login</p>
-                </div>
-                <div class="h22">
-                    <input type="text" placeholder="Introduce tu usuario.." name="uname" required>
-                    <input class="psw" type="password" placeholder="Introduce tu contraseña.." name="psw" required>
-                </div>
-                <div class="h23">
-                    <button href="footer"></button>
-                </div>
-            </div>
-        </header>
-HTML;
-}
-
-function HTMLnavbody(){
-  echo <<< HTML
   <div class="cont_body">
-      <div class="body_left">
-          <!-- NAVAGATION -->
-          <nav>
-              <div class="cont_lista">
-                  <ul>
-                      <li><a href="index.html">Inicio</a></li>
-                      <li><a href="miembros.html">Miembros</a></li>
-                      <li><a href="publicaciones.html">Publicación</a></li>
-                      <li><a href="proyectos.html">Proyectos</a></li>
-                      <li><a href="addquitpublis.html">Añadir/Editar Publicación</a> </li>
-                      <li><a href="addquitproy.html">Añadir/Editar Proyecto</a> </li>
-                      <li><a href="editmember.html">Editar usuarios</a> </li>
-                      <li><a href="vlog.html">Ver log</a> </li>
-                      <li><a href="backup.html">Realizar Backup</a> </li>
-                      <li><a href="restbackup.html">Restaurar datos backup</a> </li>
-                      <li><a href="">PDF</a> </li>
-                  </ul>
-              </div>
-              <div class="cont_user">
-                  <!-- TODO -->
-              </div>
-          </nav>
-      </div>
+  <object width='85%' height="600" data="memoria.pdf"></object>
+</div>
+HTML;
+}
+/*
+function HTMLpdf(){
+  echo '<div class="cont_body">';
+  <iframe src="http://docs.google.com/gview?url=http://memoria.pdf.pdf&embedded=true"
+  style="width:85%; height:600px;" frameborder="0"></iframe>
+  echo '</div>';
+}*/
+
+// nav una vez se tengan las sesiones activadas.
+function HTMLnav($activo){
+echo <<< HTML
+<div class="cont_body">
+    <div class="body_left">
+        <!-- NAVAGATION -->
+        <nav>
+            <div class="cont_lista">
+                <ul>
+HTML;
+if (isset($_SESSION["tipouser"])){
+  if ($_SESSION["tipouser"]=="admin"){
+    $items = ["Inicio","Miembros","Publicaciones","Proyectos","Añadir/Editar Publicaciones", "Añadir/Editar Proyectos","Editar Usuarios","Ver log","Realizar Backup", "Restaurar datos backup","PDF"];
+    foreach ($items as $k => $v) {
+      echo "<li".($k==$activo?" class='activo'":"").">"."<a href='index.php?p=".($k)."'>".$v."</a></li>";
+    }
+  }
+  else if ($_SESSION["tipouser"]=="miembro"){
+    $items = ["Inicio","Miembros","Publicaciones","Proyectos","Añadir/Editar Publicaciones", "Añadir/Editar Proyectos","PDF"];
+    foreach ($items as $k => $v) {
+      echo "<li".($k==$activo?" class='activo'":"").">"."<a href='index.php?p=".($k)."'>".$v."</a></li>";
+    }
+  }
+  else if ($_SESSION["tipouser"]=="invi") {
+    $items = ["Inicio","Miembros","Publicaciones","Proyectos","PDF"];
+    foreach ($items as $k => $v) {
+      echo "<li".($k==$activo?" class='activo'":"").">"."<a href='index.php?p=".($k)."'>".$v."</a></li>";
+    }
+  }
+}
+
+
+echo <<< HTML
+</ul></div>
+<div class="cont_user">
+</div>
+</nav>
+</div>
 HTML;
 }
 
+
+
+function HTMLlogin(){
+echo <<<HTML
+          <!-- Parte de login del header -->
+          <div class="cont_header_2">
+              <div class="h21">
+                  <p>Login</p>
+              </div>
+              <div class="h22">
+HTML;
+              if (isset($_SESSION['tipouser'])){
+                echo '<h5>Usuario:'.$_SESSION['nombre'].'-<a href=logout.php>Cerrar Sesión</a></h5>';
+              }
+              else {
+                echo '<form action="login.php", method="post">';
+                echo '<input type="text" placeholder="Introduce tu usuario.." name="uname" required>';
+                echo '<input class="psw" type="password" placeholder="Introduce tu contraseña.." name="psw" required>';
+                echo '<button type="submit" name="enviar">Entrar</button>';
+                echo '</form>';
+              }
+
+              echo <<<HTML
+              </div>
+              <div class="h23">
+                  <button href="footer"></button>
+              </div>
+          </div>
+      </header>
+HTML;
+}
+/*
 function HTMLnav($activo){
   echo <<< HTML
   <div class="cont_body">
@@ -104,47 +104,11 @@ foreach ($items as $k => $v) {
 echo <<< HTML
 </ul></div>
 <div class="cont_user">
-    <!-- TODO -->
 </div>
 </nav>
 </div>
 HTML;
-}
-
-function HTMLcierrebdoy(){
-  echo <<< HTML
-  </div>
-HTML;
-}
-
-function HTMLfooter(){
-  echo <<<HTML
-  <!--FOOTER-->
-  <footer>
-      <div class="f1">
-          <img src="img/word_cloud_footer.png" alt="logo SARG">
-          <!--LINEA VERTICAL DE SEPARACIÓN-->
-          <div class="linea"></div>
-      </div>
-      <div class="f2">
-          <p id="f12_p1">Sentiment Analysis Research Group</p>
-          <!--LINEA HORIZONTAL DE SEPARACIÓN-->
-          <div class="linea"></div><br>
-          <!--LISTA DEL FOOTER-->
-          <ul>
-              <li><a href="">Inicio</a></li>
-              <li><a href="">Miembros</a></li>
-              <li><a href="">Publicación</a></li>
-              <li><a href="">Proyectos</a></li>
-          </ul>
-      </div>
-
-      <div class="f3">
-          <img src="img/logo_UGR2.png" alt="logo UGR">
-      </div>
-  </footer>
-HTML;
-}
+}*/
 
 /**************************/
 
@@ -177,93 +141,189 @@ function HTMLindex(){
 HTML;
 }
 
-function HTMLmiembros(){
+function HTMLmiembros($res){
   echo <<<HTML
   <div class="body_right">
       <!-- MIEMBROS -->
       <div class="cont_miembros">
-          <!-- Contenedor izquierdo de miembros -->
-          <div class="cont_miembros_left">
-              <!-- MIEMBRO -->
-              <div class="miembro" id="1">
-                  <!-- Contiene la foto del miembro-->
-                  <div class="m1">
-                      <img src="img/foto_miembro" alt="foto_miembro">
-                      <div id="bloque_azul"></div>
-                  </div>
-                  <!-- Contiene los datos del miembro-->
-                  <div class="m2">
-                      <p class="primero"> Nombre usuario </p>
-                      <p> Categoría </p>
-                      <p> Dirección </p>
-                      <p> blablableh3</p>
-                  </div>
-                  <!-- Contiene los botones de gestión de miembros -->
-                  <div class="m3">
-                      <button class="añadir">Añadir</button><br>
-                      <button class="modificar">Modificar</button><br>
-                      <button class="eliminar">Eliminar</button>
-                  </div>
-              </div>
-          </div>
-          <!-- Contenedor derecho de miembros -->
-          <div class="cont_miembros_right">
-              <!-- MIEMBRO -->
-              <div class="miembro" id="1">
-                  <!-- Contiene la foto del miembro-->
-                  <div class="m1">
-                      <img src="img/foto_miembro" alt="foto_miembro">
-                      <div id="bloque_azul"></div>
-                  </div>
-                  <!-- Contiene los datos del miembro-->
-                  <div class="m2">
-                      <p class="primero"> Nombre usuario </p>
-                      <p> Categoría </p>
-                      <p> Dirección </p>
-                      <p> blablableh3</p>
-                  </div>
-                  <!-- Contiene los botones de gestión de miembros -->
-                  <div class="m3">
-                      <button class="añadir">Añadir</button><br>
-                      <button class="modificar">Modificar</button><br>
-                      <button class="eliminar">Eliminar</button>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
 HTML;
-}
 
-function HTMLproyectos(){
-  echo <<<HTML
+$len = sizeof($res);
+echo '<div class="cont_miembros_left">';
+for($i=0;$i<$len;$i++){
+  $proy = $res[$i];
+  if ($i%2!=1) {
+    echo '<div class="miembro">';
+    echo '<div class="m1">
+        <img src="img/foto_miembro" alt="foto_miembro">
+        <div id="bloque_azul"></div>
+    </div>';
+    echo '<div class="m2">';
+        echo '<p class="primero"> Nombre usuario: '.$proy["Nombre"].' '.$proy["Apellidos"].' </p>';
+        echo '<p> Categoría: '.$proy["Categoria"].' </p>';
+        echo '<p> Dirección: '.$proy["Dirección"].' </p>';
+    echo '</div></div>';
+  }
+}
+echo '</div>';// Final cont_miembros_left
+
+echo '<div class="cont_miembros_right">';
+for($i=0;$i<$len;$i++){
+  if ($i%2==0) {
+    echo '<div class="miembro">';
+    echo '<div class="m1">
+        <img src="img/foto_miembro" alt="foto_miembro">
+        <div id="bloque_azul"></div>
+    </div>';
+    echo '<div class="m2">';
+        echo '<p class="primero"> Nombre usuario: '.$proy["Nombre"].' '.$proy["Apellidos"].' </p>';
+        echo '<p> Categoría: '.$proy["Categoria"].' </p>';
+        echo '<p> Dirección: '.$proy["Dirección"].' </p>';
+    echo '</div></div>';
+  }
+}
+echo '</div>';// Final cont_miembros_right
+echo '</div></div>
+</div>';
+}
+/**QUERY**/
+
+/*HTML;
+}*/
+/**********Proyectos*************/
+
+function HTMLproyectos($res){
+  $len = sizeof($res);
+  echo <<< HTML
   <div class="body_right">
                 <div class="cont_proyectos">
-                    <p id="p_proy">Proyectos realizados por nuestro grupo de investigación: </p>
-                    <!--PROYECTO -->
-                    <div class="proyecto">
-                        <ul>
-                            <li>Código: Code</li>
-                            <li>Título: Title</li>
-                            <li>Descripción <br><span>Description</span></li>
-                        </ul>
-                        <table border="1">
-                            <tr>
-                                <th>Publicacion</th>
-                            </tr>
-                            <tr>
-                                <th><a href="">Referenca a publicacion 1</a> </th>
-                            </tr>
-                            <tr>
-                                <th><a href="">Referenca a publicacion 2</a> </th>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-            </div>
+                <p id="p_proy">Proyectos realizados por nuestro grupo de investigación: </p>
 HTML;
+
+  /*for($i=0;$i<$len;$i++){
+    for($j=0;$j<$len;$j++){
+      if ($proy[$i]==$proy[$j]) {
+
+      }
+    }
+  }*/
+
+  for($i=0;$i<$len;$i++){
+    $proy = $res[$i];
+    echo '
+    <div class="proyecto">
+        <ul>';
+        echo "<li> Codigo: ".$proy["Codigo"]."</li>";
+        echo "<li> Titulo: ".$proy["proyecto"]."</li>";
+        echo "<li> Descripción: </br><span>".$proy["Descripcion"]."</span></li></ul>";
+        echo '<table border="1">';
+        // echo '<tr><th>'.$proy['3'].'</th></tr>';
+        echo '<tr><th> Publicacion: '.$proy["publicacion"].' </th></tr>';
+        echo "</table></div>";
+  }
+  echo '</div></div>';
 }
+
+function HTMLaddquitproy($res){
+  echo <<<HTML
+  <div class="body_right">
+                <div class="cont_mod_proy">
+                    <p id="contProy">Proyectos realizados por nuestro grupo de investigación: </p>
+HTML;
+
+    $len = sizeof($res);
+
+    echo '<div class="proyecto">
+          <p>Proyecto NºXXX:
+          <ul>';
+    echo '<li>Codigo</li><li>Titulo</li><li>Descripcion</li></ul>';
+    echo '<div class="proy1"><button class="añadir">Añadir</button><br></div></div>';
+
+    for($i=0;$i<$len;$i++){
+      $proy = $res[$i];
+      echo '<div class="proyecto">';
+          echo '<p>Proyecto Nº'.$i.'<p>';
+          echo '<ul>';
+      echo '<li>Codigo: '.$proy["Codigo"].'</li>';
+      echo '<li>Título: '.$proy["Titulo"].'</li>';
+      echo '<li>Descripcion: </br><span>'.$proy["Descripcion"].'</span></li></ul>';
+      echo '<div class="proy1">
+                                    <button class="modificar">Modificar</button><br>
+                                    <button class="eliminar">Eliminar</button>
+                        </div>
+                    </div>';
+    }
+    echo '</div></div>';
+}
+
+function HTMLeditmembers($res){
+  echo <<<HTML
+  <div class="body_right">
+      <!-- MIEMBROS -->
+      <div class="cont_miembros">
+HTML;
+
+$len = sizeof($res);
+echo '<div class="cont_miembros_left">';
+echo '<div class="miembro">
+    <div class="m1">
+        <img src="img/foto_miembro" alt="foto_miembro">
+        <div id="bloque_azul"></div>
+    </div>
+    <div class="m2">
+        <p class="primero"> Nombre usuario </p>
+        <p> Categoría </p>
+        <p> Dirección </p>
+    </div>
+    <div class="m3">
+        <button class="añadir">Añadir</button><br>
+    </div>
+  </div>
+';
+for($i=0;$i<$len;$i++){
+  $proy = $res[$i];
+  if ($i%2!=1) {
+    echo '<div class="miembro">';
+    echo '<div class="m1">
+        <img src="img/foto_miembro" alt="foto_miembro">
+        <div id="bloque_azul"></div>
+    </div>';
+    echo '<div class="m2">';
+        echo '<p class="primero"> Nombre usuario: '.$proy["Nombre"].' '.$proy["Apellidos"].' </p>';
+        echo '<p> Categoría: '.$proy["Categoria"].' </p>';
+        echo '<p> Dirección: '.$proy["Dirección"].' </p>';
+    echo '</div><div class="m3">
+        <button class="modificar">Modificar</button><br>
+        <button class="eliminar">Eliminar</button>
+    </div></div>';
+  }
+}
+echo '</div>';// Final cont_miembros_left
+
+echo '<div class="cont_miembros_right">';
+
+for($i=0;$i<$len;$i++){
+  if ($i%2==0) {
+    echo '<div class="miembro">';
+    echo '<div class="m1">
+        <img src="img/foto_miembro" alt="foto_miembro">
+        <div id="bloque_azul"></div>
+    </div>';
+    echo '<div class="m2">';
+        echo '<p class="primero"> Nombre usuario: '.$proy["Nombre"].' '.$proy["Apellidos"].' </p>';
+        echo '<p> Categoría: '.$proy["Categoria"].' </p>';
+        echo '<p> Dirección: '.$proy["Dirección"].' </p>';
+    echo '</div><div class="m3">
+        <button class="modificar">Modificar</button><br>
+        <button class="eliminar">Eliminar</button>
+    </div></div>';
+  }
+}
+echo '</div>';// Final cont_miembros_right
+echo '</div></div>
+</div>';
+}
+
 
 function HTMLpublicaciones(){
   echo <<<HTML
@@ -328,30 +388,6 @@ function HTMLpublicaciones(){
                             </tr>
                         </table>
                     </div>
-                </div>
-            </div>
-HTML;
-}
-
-function HTMLaddquitproy(){
-  echo <<<HTML
-  <div class="body_right">
-                <div class="cont_mod_proy">
-                    <p id="contProy">Proyectos realizados por nuestro grupo de investigación: </p>
-                    <!--PROYECTO MODIFICABLE-->
-                    <div class="proyecto">
-                        <ul>
-                            <li>Código: Code</li>
-                            <li>Título: Title</li>
-                            <li>Descripción <br><span>Description</span></li>
-                        </ul>
-                        <div class="proy1">
-                                    <button class="añadir">Añadir</button><br>
-                                    <button class="modificar">Modificar</button><br>
-                                    <button class="eliminar">Eliminar</button>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 HTML;
