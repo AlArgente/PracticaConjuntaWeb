@@ -1,9 +1,9 @@
 <?php
-require "html.php";
+require_once"html.php";
 require_once('credenciales.php');
-require "db.php";
-include "head.html";
-include "cabecera.html";
+require_once "db.php";
+include_once "head.html";
+include_once "cabecera.html";
 HTMLlogin();
 if (!isset($_SESSION["tipouser"])) {
   $_SESSION["tipouser"]="miembro";

@@ -1,5 +1,5 @@
 <?php
-
+/******************************************************************************/
 function HTMLpdf(){
   echo <<<HTML
   <div class="cont_body">
@@ -7,6 +7,7 @@ function HTMLpdf(){
 </div>
 HTML;
 }
+/******************************************************************************/
 /*
 function HTMLpdf(){
   echo '<div class="cont_body">';
@@ -17,47 +18,52 @@ function HTMLpdf(){
 
 // nav una vez se tengan las sesiones activadas.
 function HTMLnav($activo){
-echo <<< HTML
-<div class="cont_body">
-    <div class="body_left">
-        <!-- NAVAGATION -->
-        <nav>
-            <div class="cont_lista">
-                <ul>
+  echo <<< HTML
+  <div class="cont_body">
+      <div class="body_left">
+          <!-- NAVAGATION -->
+          <nav>
+              <div class="cont_lista">
+                  <ul>
 HTML;
-if (isset($_SESSION["tipouser"])){
-  if ($_SESSION["tipouser"]=="admin"){
-    $items = ["Inicio","Miembros","Publicaciones","Proyectos","Añadir/Editar Publicaciones", "Añadir/Editar Proyectos","Editar Usuarios","Ver log","Realizar Backup", "Restaurar datos backup","PDF"];
-    foreach ($items as $k => $v) {
-      echo "<li".($k==$activo?" class='activo'":"").">"."<a href='index.php?p=".($k)."'>".$v."</a></li>";
-    }
-  }
-  else if ($_SESSION["tipouser"]=="miembro"){
-    $items = ["Inicio","Miembros","Publicaciones","Proyectos","Añadir/Editar Publicaciones", "Añadir/Editar Proyectos","PDF"];
-    foreach ($items as $k => $v) {
-      echo "<li".($k==$activo?" class='activo'":"").">"."<a href='index.php?p=".($k)."'>".$v."</a></li>";
-    }
-  }
-  else if ($_SESSION["tipouser"]=="invi") {
-    $items = ["Inicio","Miembros","Publicaciones","Proyectos","PDF"];
-    foreach ($items as $k => $v) {
-      echo "<li".($k==$activo?" class='activo'":"").">"."<a href='index.php?p=".($k)."'>".$v."</a></li>";
-    }
-  }
-}
+  if (isset($_SESSION["tipouser"])){
+    if ($_SESSION["tipouser"]=="admin"){
+      $items = ["Inicio","Miembros","Publicaciones","Proyectos","Añadir/Editar 
+      Publicaciones", "Añadir/Editar Proyectos","Editar Usuarios","Ver log",
+      "Realizar Backup", "Restaurar datos backup","PDF"];
 
+      foreach ($items as $k => $v) {
+        echo "<li".($k==$activo?" class='activo'":"").">"."<a href='index.php?
+          p=".($k)."'>".$v."</a></li>";
+      }
+    }
+    else if ($_SESSION["tipouser"]=="miembro"){
+      $items = ["Inicio","Miembros","Publicaciones","Proyectos","Añadir/Editar 
+               Publicaciones", "Añadir/Editar Proyectos","PDF"];
+      foreach ($items as $k => $v) {
+        echo "<li".($k==$activo?" class='activo'":"").">"."<a href='index.php?
+              p=".($k)."'>".$v."</a></li>";
+      }
+    }
+    else if ($_SESSION["tipouser"]=="invi") {
+      $items = ["Inicio","Miembros","Publicaciones","Proyectos","PDF"];
+      foreach ($items as $k => $v) {
+        echo "<li".($k==$activo?" class='activo'":"").">"."<a href='index.php?
+              p=".($k)."'>".$v."</a></li>";
+      }
+    }
+  }
 
-echo <<< HTML
-</ul></div>
-<div class="cont_user">
-</div>
-</nav>
-</div>
+  //Cerrar nav con la lista
+  echo <<< HTML
+  </ul></div>
+  <div class="cont_user">
+  </div>
+  </nav>
+  </div>
 HTML;
 }
-
-
-
+/******************************************************************************/
 function HTMLlogin(){
 echo <<<HTML
           <!-- Parte de login del header -->
@@ -87,60 +93,14 @@ HTML;
       </header>
 HTML;
 }
-/*
-function HTMLnav($activo){
-  echo <<< HTML
-  <div class="cont_body">
-      <div class="body_left">
-          <!-- NAVAGATION -->
-          <nav>
-              <div class="cont_lista">
-                  <ul>
-HTML;
-$items = ["Inicio","Miembros","Publicaciones","Proyectos","Añadir/Editar Publicaciones", "Añadir/Editar Proyectos","Editar Usuarios","Ver log","Realizar Backup", "Restaurar datos backup","PDF"];
-foreach ($items as $k => $v) {
-  echo "<li".($k==$activo?" class='activo'":"").">"."<a href='index.php?p=".($k)."'>".$v."</a></li>";
-}
-echo <<< HTML
-</ul></div>
-<div class="cont_user">
-</div>
-</nav>
-</div>
-HTML;
-}*/
+/******************************************************************************/
 
-/**************************/
 
 function HTMLindex(){
-  echo <<<HTML
-  <div class="body_right">
-                <!--PRINCIPAL-->
-                <div class="cont_principal">
-                    <div class="cont_left">
-                        <div class="cont_text">
-
-                            <h1>¿Quienes somos?</h1>
-                            <p class="descripcion">SARG (Sentiment Analysis Research Group) es un grupo de investigación en el campo de la Ciencia de Datos enfocado a la extracción y análisis de los sentimientos procedentes de un texto.
-
-                            El grupo está actualmente estudiando algoritmos de aprendizaje automático para buscar aquellos que den mejores resultados en la extracción de sentimientos a nivel de aspecto. Por otro lado, la extracción y selección de las características que permiten entrenar estos modelos son un tema de gran interés.
-
-                            El grupo está compuesto por 7 integrantes, miembros del departamento de Ciencias de la Computación e Inteligencia Artificial de la Universidad de Granada.</p>
-
-                            <h1>Análisis de Sentimientos</h1>
-                            <p> El análisis de sentimientos es el procesamiento del lenguaje natural y análisis del texto que nos permite extraer información subjetiva procedente del texto fuente o corpus. Desde el punto de vista de la minería de datos, el análisis de sentimientos es una tarea de clasificación masiva de documentos de manera automática en función de la connotación postiva o negativa del lenguaje del documento. </p>
-
-                            <img src="img/pic_principal_PNG.png">
-                        </div>
-                    </div>
-                    <div class="cont_right">
-                        <img class="foto_etsiit" src="img/etsiit2.png"s>
-                    </div>
-                </div>
-            </div>
-HTML;
+  include "principal.html";
 }
 
+/******************************************************************************/
 function HTMLmiembros($res){
   echo <<<HTML
   <div class="body_right">
@@ -148,56 +108,53 @@ function HTMLmiembros($res){
       <div class="cont_miembros">
 HTML;
 
-$len = sizeof($res);
-echo '<div class="cont_miembros_left">';
-for($i=0;$i<$len;$i++){
-  $proy = $res[$i];
-  if ($i%2!=1) {
-    echo '<div class="miembro">';
-    echo '<div class="m1">
-        <img src="img/foto_miembro" alt="foto_miembro">
-        <div id="bloque_azul"></div>
-    </div>';
-    echo '<div class="m2">';
-        echo '<p class="primero"> Nombre usuario: '.$proy["Nombre"].' '.$proy["Apellidos"].' </p>';
-        echo '<p> Categoría: '.$proy["Categoria"].' </p>';
-        echo '<p> Dirección: '.$proy["Direccion"].' </p>';
-    echo '</div></div>';
+  $len = sizeof($res);
+  echo '<div class="cont_miembros_left">';
+  for($i=0;$i<$len;$i++){
+    $proy = $res[$i];
+    if ($i%2!=1) {
+      echo '<div class="miembro">';
+      echo '<div class="m1">
+          <img src="img/foto_miembro" alt="foto_miembro">
+          <div id="bloque_azul"></div>
+      </div>';
+      echo '<div class="m2">';
+          echo '<p class="primero"> Nombre usuario: '.$proy["Nombre"].' '.$proy["Apellidos"].' </p>';
+          echo '<p> Categoría: '.$proy["Categoria"].' </p>';
+          echo '<p> Dirección: '.$proy["Direccion"].' </p>';
+      echo '</div></div>';
+    }
   }
-}
-echo '</div>';// Final cont_miembros_left
 
-echo '<div class="cont_miembros_right">';
-for($i=0;$i<$len;$i++){
-  if ($i%2==0) {
-    echo '<div class="miembro">';
-    echo '<div class="m1">
-        <img src="img/foto_miembro" alt="foto_miembro">
-        <div id="bloque_azul"></div>
-    </div>';
-    echo '<div class="m2">';
-        echo '<p class="primero"> Nombre usuario: '.$proy["Nombre"].' '.$proy["Apellidos"].' </p>';
-        echo '<p> Categoría: '.$proy["Categoria"].' </p>';
-        echo '<p> Dirección: '.$proy["Direccion"].' </p>';
-    echo '</div></div>';
+  echo '</div>';// Final cont_miembros_left
+
+  echo '<div class="cont_miembros_right">';
+  for($i=0;$i<$len;$i++){
+    if ($i%2==0) {
+      echo '<div class="miembro">';
+      echo '<div class="m1">
+          <img src="img/foto_miembro" alt="foto_miembro">
+          <div id="bloque_azul"></div>
+      </div>';
+      echo '<div class="m2">';
+          echo '<p class="primero"> Nombre usuario: '.$proy["Nombre"].' '.$proy["Apellidos"].' </p>';
+          echo '<p> Categoría: '.$proy["Categoria"].' </p>';
+          echo '<p> Dirección: '.$proy["Direccion"].' </p>';
+      echo '</div></div>';
+    }
   }
+  echo '</div>';// Final cont_miembros_right
+  echo '</div></div>
+  </div>';
 }
-echo '</div>';// Final cont_miembros_right
-echo '</div></div>
-</div>';
-}
-/**QUERY**/
 
-/*HTML;
-}*/
-/**********Proyectos*************/
-
+/******************************************************************************/
 function HTMLproyectos($res){
   $len = sizeof($res);
   echo <<< HTML
   <div class="body_right">
-                <div class="cont_proyectos">
-                <p id="p_proy">Proyectos realizados por nuestro grupo de investigación: </p>
+    <div class="cont_proyectos">
+      <p id="p_proy">Proyectos realizados por nuestro grupo de investigación: </p>
 HTML;
 
   /*for($i=0;$i<$len;$i++){
@@ -223,7 +180,7 @@ HTML;
   }
   echo '</div></div>';
 }
-
+/******************************************************************************/
 function HTMLaddquitproy($res){
   echo <<<HTML
   <div class="body_right">
@@ -255,7 +212,7 @@ HTML;
     }
     echo '</div></div>';
 }
-
+/******************************************************************************/
 function HTMLeditmembers($res){
   echo <<<HTML
   <div class="body_right">
@@ -324,7 +281,7 @@ echo '</div></div>
 </div>';
 }
 
-
+/******************************************************************************/
 function HTMLpublicaciones(){
   echo <<<HTML
   <div class="body_right">
@@ -392,6 +349,5 @@ function HTMLpublicaciones(){
             </div>
 HTML;
 }
-
-
+/******************************************************************************/
 ?>
