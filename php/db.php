@@ -43,7 +43,7 @@ function DB_query($db, $query){
 }
 
 function DB_miembros($db){
-  $query = "SELECT Nombre, Apellidos, Categoria, Dirección from Miembro;";
+  $query = "SELECT Nombre, Apellidos, Categoria, Direccion from Miembros;";
   $res = DB_query($db,$query);
   HTMLmiembros($res);
 }
@@ -62,7 +62,7 @@ function DB_addquitproyectos($db){
 }
 
 function DB_editmembers($db){
-  $query = "SELECT Nombre, Apellidos, Categoria, Dirección from Miembro;";
+  $query = "SELECT Nombre, Apellidos, Categoria, Direccion from Miembros;";
   $res = DB_query($db,$query);
   HTMLeditmembers($res);
 }

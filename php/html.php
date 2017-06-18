@@ -161,7 +161,7 @@ for($i=0;$i<$len;$i++){
     echo '<div class="m2">';
         echo '<p class="primero"> Nombre usuario: '.$proy["Nombre"].' '.$proy["Apellidos"].' </p>';
         echo '<p> Categoría: '.$proy["Categoria"].' </p>';
-        echo '<p> Dirección: '.$proy["Dirección"].' </p>';
+        echo '<p> Dirección: '.$proy["Direccion"].' </p>';
     echo '</div></div>';
   }
 }
@@ -178,7 +178,7 @@ for($i=0;$i<$len;$i++){
     echo '<div class="m2">';
         echo '<p class="primero"> Nombre usuario: '.$proy["Nombre"].' '.$proy["Apellidos"].' </p>';
         echo '<p> Categoría: '.$proy["Categoria"].' </p>';
-        echo '<p> Dirección: '.$proy["Dirección"].' </p>';
+        echo '<p> Dirección: '.$proy["Direccion"].' </p>';
     echo '</div></div>';
   }
 }

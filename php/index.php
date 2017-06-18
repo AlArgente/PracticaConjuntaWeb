@@ -6,7 +6,7 @@ include "head.html";
 include "cabecera.html";
 HTMLlogin();
 if (!isset($_SESSION["tipouser"])) {
-  $_SESSION["tipouser"]="admin";
+  $_SESSION["tipouser"]="miembro";
 }
 /**Conexión a la BD**/
 $db = DB_conexion();
@@ -54,8 +54,7 @@ if ($_SESSION["tipouser"]=="admin") {
     case 3:DB_proyectos($db);break;
     case 4:HTMLaddquitpublis();break;
     case 5:DB_addquitproyectos($db);break;
-    case 6:DB_editmembers($db);break;
-    case 7:HTMLpdf();break;
+    case 6:HTMLpdf();break;
   }
 }else if ($_SESSION["tipouser"]=="invi"){
     HTMLnav($_GET['p']);
@@ -72,4 +71,5 @@ if ($_SESSION["tipouser"]=="admin") {
 include "cierrebody.html";
 include "footer.html";
 include "fin.html";
+DB_desconexion($db);
 ?>

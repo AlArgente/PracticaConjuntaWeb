@@ -8,7 +8,7 @@ if (isset($_POST["enviar"])) {
 
   // Ahora realizamos la consulta a la BD para comprobar la conexión.
 
-  $query = "SELECT idUsuario as id, Nombre as name, ClaveAcceso as password, tipouser as type FROM Miembro WHERE idUsuario=$user and ClaveAcceso=$pass";
+  $query = "SELECT idUsuario as id, Nombre as name, ClaveAcceso as password, TipoUsuario as type FROM Miembro WHERE idUsuario=$user and ClaveAcceso=$pass";
   $db = mysqli_connect(DB_HOST,DB_USER,DB_PASSWD,DB_DATABASE);
   $res = mysqli_query($db, $query);
 
