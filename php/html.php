@@ -1,5 +1,8 @@
 <?php
-/******************************************************************************/
+/*
+Esta función se ha creado para mostrar por pantalla el PDF con la memoria de
+la práctica realizada.
+*/
 function HTMLpdf(){
   echo <<<HTML
   <div class="cont_body">
@@ -7,63 +10,63 @@ function HTMLpdf(){
 </div>
 HTML;
 }
-/******************************************************************************/
-/*
-function HTMLpdf(){
-  echo '<div class="cont_body">';
-  <iframe src="http://docs.google.com/gview?url=http://memoria.pdf.pdf&embedded=true"
-  style="width:85%; height:600px;" frameborder="0"></iframe>
-  echo '</div>';
-}*/
-
+/***************************************************************************/
 // nav una vez se tengan las sesiones activadas.
+/*
+Con este nav según el tipo de usuario que esté logueado se mostrarán unos items
+u otros.
+*/
 function HTMLnav($activo){
-  echo <<< HTML
-  <div class="cont_body">
-      <div class="body_left">
-          <!-- NAVAGATION -->
-          <nav>
-              <div class="cont_lista">
-                  <ul>
+echo <<< HTML
+<div class="cont_body">
+    <div class="body_left">
+        <!-- NAVAGATION -->
+        <nav>
+            <div class="cont_lista">
+                <ul>
 HTML;
-  if (isset($_SESSION["tipouser"])){
-    if ($_SESSION["tipouser"]=="admin"){
-      $items = ["Inicio","Miembros","Publicaciones","Proyectos","Añadir/Editar 
-      Publicaciones", "Añadir/Editar Proyectos","Editar Usuarios","Ver log",
-      "Realizar Backup", "Restaurar datos backup","PDF"];
-
-      foreach ($items as $k => $v) {
-        echo "<li".($k==$activo?" class='activo'":"").">"."<a href='index.php?
-          p=".($k)."'>".$v."</a></li>";
-      }
-    }
-    else if ($_SESSION["tipouser"]=="miembro"){
-      $items = ["Inicio","Miembros","Publicaciones","Proyectos","Añadir/Editar 
-               Publicaciones", "Añadir/Editar Proyectos","PDF"];
-      foreach ($items as $k => $v) {
-        echo "<li".($k==$activo?" class='activo'":"").">"."<a href='index.php?
-              p=".($k)."'>".$v."</a></li>";
-      }
-    }
-    else if ($_SESSION["tipouser"]=="invi") {
-      $items = ["Inicio","Miembros","Publicaciones","Proyectos","PDF"];
-      foreach ($items as $k => $v) {
-        echo "<li".($k==$activo?" class='activo'":"").">"."<a href='index.php?
-              p=".($k)."'>".$v."</a></li>";
-      }
+if (isset($_SESSION["tipouser"])){
+  // Si se está logueado como admin
+  if ($_SESSION['tipouser']=="admin"){
+    $items = ["Inicio","Miembros","Publicaciones","Proyectos","Añadir/Editar Publicaciones", "Añadir/Editar Proyectos","Editar Usuarios","Ver log","Realizar Backup", "Restaurar datos backup","PDF"];
+    foreach ($items as $k => $v) {
+      echo "<li".($k==$activo?" class='activo'":"").">"."<a href='index.php?p=".($k)."'>".$v."</a></li>";
     }
   }
+  // Si se está logueado como miembro
+  else if ($_SESSION['tipouser']=="miembro"){
+    $items = ["Inicio","Miembros","Publicaciones","Proyectos","Añadir/Editar Publicaciones", "Añadir/Editar Proyectos","PDF"];
+    foreach ($items as $k => $v) {
+      echo "<li".($k==$activo?" class='activo'":"").">"."<a href='index.php?p=".($k)."'>".$v."</a></li>";
+    }
+  }
+  // Si no se está logueado y es solamente un invitado.
+  else if ($_SESSION['tipouser']=="invi") {
+    $items = ["Inicio","Miembros","Publicaciones","Proyectos","PDF"];
+    foreach ($items as $k => $v) {
+      echo "<li".($k==$activo?" class='activo'":"").">"."<a href='index.php?p=".($k)."'>".$v."</a></li>";
+    }
+  }
+}
 
-  //Cerrar nav con la lista
-  echo <<< HTML
-  </ul></div>
-  <div class="cont_user">
-  </div>
-  </nav>
-  </div>
+echo <<< HTML
+</ul></div>
+<div class="cont_user">
+</div>
+</nav>
+</div>
 HTML;
 }
-/******************************************************************************/
+
+/***************************************************************************/
+
+/*
+Esta función está creada para poder realizar el login en la página, a través
+del formulario realizado y de la función que se encuentra en el archivo
+login.php, además si se está logueado se puede cerrar la sesión a través de
+logout.php
+*/
+
 function HTMLlogin(){
 echo <<<HTML
           <!-- Parte de login del header -->
@@ -73,34 +76,33 @@ echo <<<HTML
               </div>
               <div class="h22">
 HTML;
-              if (isset($_SESSION['tipouser'])){
-                echo '<h5>Usuario:'.$_SESSION['nombre'].'-<a href=logout.php>Cerrar Sesión</a></h5>';
+              if ($_SESSION['tipouser']!="invi"){
+                echo '<h5>'.$_SESSION['nombre'].'-<a href=logout.php>Cerrar Sesión</a></h5>';
               }
               else {
                 echo '<form action="login.php", method="post">';
                 echo '<input type="text" placeholder="Introduce tu usuario.." name="uname" required>';
                 echo '<input class="psw" type="password" placeholder="Introduce tu contraseña.." name="psw" required>';
-                echo '<button type="submit" name="enviar">Entrar</button>';
-                echo '</form>';
-              }
+                /*echo '<button type="submit" name="enviar">Entrar</button>';
+                echo '</form>';*/
 
-              echo <<<HTML
-              </div>
-              <div class="h23">
-                  <button href="footer"></button>
+              echo '</div>
+              <div class="h23">¡';
+                  echo '<button type="submit" name="enviar"></button>';
+                  echo '</form>';
+                }
+                  echo <<<HTML
               </div>
           </div>
       </header>
 HTML;
 }
-/******************************************************************************/
 
-
-function HTMLindex(){
-  include "principal.html";
-}
-
-/******************************************************************************/
+/**************************/
+/*
+Esta función muestra los miembros que tenemos en el sistema. Es llamada desde
+DB_miembros y recibe el resultado de la query a través de $res
+*/
 function HTMLmiembros($res){
   echo <<<HTML
   <div class="body_right">
@@ -108,62 +110,57 @@ function HTMLmiembros($res){
       <div class="cont_miembros">
 HTML;
 
-  $len = sizeof($res);
-  echo '<div class="cont_miembros_left">';
-  for($i=0;$i<$len;$i++){
-    $proy = $res[$i];
-    if ($i%2!=1) {
-      echo '<div class="miembro">';
-      echo '<div class="m1">
-          <img src="img/foto_miembro" alt="foto_miembro">
-          <div id="bloque_azul"></div>
-      </div>';
-      echo '<div class="m2">';
-          echo '<p class="primero"> Nombre usuario: '.$proy["Nombre"].' '.$proy["Apellidos"].' </p>';
-          echo '<p> Categoría: '.$proy["Categoria"].' </p>';
-          echo '<p> Dirección: '.$proy["Direccion"].' </p>';
-      echo '</div></div>';
-    }
+$len = sizeof($res);
+echo '<div class="cont_miembros_left">';
+for($i=0;$i<$len;$i++){
+  $proy = $res[$i];
+  if ($i%2!=1) {
+    echo '<div class="miembro">';
+    echo '<div class="m1">
+        <img src="img/foto_miembro" alt="foto_miembro">
+        <div id="bloque_azul"></div>
+    </div>';
+    echo '<div class="m2">';
+        echo '<p class="primero"> Nombre usuario: '.$proy["Nombre"].' '.$proy["Apellidos"].' </p>';
+        echo '<p> Categoría: '.$proy["Categoria"].' </p>';
+        echo '<p> Dirección: '.$proy["Direccion"].' </p>';
+    echo '</div></div>';
   }
+}
+echo '</div>';// Final cont_miembros_left
 
-  echo '</div>';// Final cont_miembros_left
-
-  echo '<div class="cont_miembros_right">';
-  for($i=0;$i<$len;$i++){
-    if ($i%2==0) {
-      echo '<div class="miembro">';
-      echo '<div class="m1">
-          <img src="img/foto_miembro" alt="foto_miembro">
-          <div id="bloque_azul"></div>
-      </div>';
-      echo '<div class="m2">';
-          echo '<p class="primero"> Nombre usuario: '.$proy["Nombre"].' '.$proy["Apellidos"].' </p>';
-          echo '<p> Categoría: '.$proy["Categoria"].' </p>';
-          echo '<p> Dirección: '.$proy["Direccion"].' </p>';
-      echo '</div></div>';
-    }
+echo '<div class="cont_miembros_right">';
+for($i=0;$i<$len;$i++){
+  if ($i%2==0) {
+    echo '<div class="miembro">';
+    echo '<div class="m1">
+        <img src="img/foto_miembro" alt="foto_miembro">
+        <div id="bloque_azul"></div>
+    </div>';
+    echo '<div class="m2">';
+        echo '<p class="primero"> Nombre usuario: '.$proy["Nombre"].' '.$proy["Apellidos"].' </p>';
+        echo '<p> Categoría: '.$proy["Categoria"].' </p>';
+        echo '<p> Dirección: '.$proy["Direccion"].' </p>';
+    echo '</div></div>';
   }
-  echo '</div>';// Final cont_miembros_right
-  echo '</div></div>
-  </div>';
+}
+echo '</div>';// Final cont_miembros_right
+echo '</div></div>
+</div>';
 }
 
-/******************************************************************************/
+/**********Proyectos*************/
+/*
+Es función muestra los proyectos que tenemos en el sistema. Se llama a través
+de DB_proyectos, desde la cual le pasamos el resultado de la query ($res)
+*/
 function HTMLproyectos($res){
   $len = sizeof($res);
   echo <<< HTML
   <div class="body_right">
-    <div class="cont_proyectos">
-      <p id="p_proy">Proyectos realizados por nuestro grupo de investigación: </p>
+                <div class="cont_proyectos">
+                <p id="p_proy">Proyectos realizados por nuestro grupo de investigación: </p>
 HTML;
-
-  /*for($i=0;$i<$len;$i++){
-    for($j=0;$j<$len;$j++){
-      if ($proy[$i]==$proy[$j]) {
-
-      }
-    }
-  }*/
 
   for($i=0;$i<$len;$i++){
     $proy = $res[$i];
@@ -180,7 +177,16 @@ HTML;
   }
   echo '</div></div>';
 }
-/******************************************************************************/
+
+/***************************************************************************/
+
+/*
+Esta función recibe la query $res para mostrar los proyectos y posteriormente
+poder borrar proyectos, modificarlos o añadirlos. Estas funcionalidades no han
+sido implementadas.
+*/
+
+
 function HTMLaddquitproy($res){
   echo <<<HTML
   <div class="body_right">
@@ -212,7 +218,17 @@ HTML;
     }
     echo '</div></div>';
 }
-/******************************************************************************/
+
+
+/***************************************************************************/
+/*
+Esta función nos muestra a través de la query $res los miembros que tenemos en
+el sistema, y además nos permite añadir nuevos usuarios a través de addmember.php,
+y eliminar users a través de eliminaruser.php
+La implementación para modificar no ha sido realizada
+*/
+
+
 function HTMLeditmembers($res){
   echo <<<HTML
   <div class="body_right">
@@ -232,8 +248,10 @@ echo '<div class="miembro">
         <p> Categoría </p>
         <p> Dirección </p>
     </div>
-    <div class="m3">
-        <button class="añadir">Añadir</button><br>
+      <div class="m3">';
+          echo '<form action="addmember.php", method="post">';
+          echo '<button class="añadir">Añadir</button><br>';
+    echo '</form>
     </div>
   </div>
 ';
@@ -248,10 +266,13 @@ for($i=0;$i<$len;$i++){
     echo '<div class="m2">';
         echo '<p class="primero"> Nombre usuario: '.$proy["Nombre"].' '.$proy["Apellidos"].' </p>';
         echo '<p> Categoría: '.$proy["Categoria"].' </p>';
-        echo '<p> Dirección: '.$proy["Dirección"].' </p>';
+        echo '<p> Dirección: '.$proy["Direccion"].' </p>';
     echo '</div><div class="m3">
         <button class="modificar">Modificar</button><br>
-        <button class="eliminar">Eliminar</button>
+        <form action="eliminaruser.php", method=post>
+          <input type="radio" name="Eliminar" value='.$proy["idMiembro"].'>
+          <input type="submit" value="Eliminar">
+        </form>
     </div></div>';
   }
 }
@@ -269,10 +290,13 @@ for($i=0;$i<$len;$i++){
     echo '<div class="m2">';
         echo '<p class="primero"> Nombre usuario: '.$proy["Nombre"].' '.$proy["Apellidos"].' </p>';
         echo '<p> Categoría: '.$proy["Categoria"].' </p>';
-        echo '<p> Dirección: '.$proy["Dirección"].' </p>';
+        echo '<p> Dirección: '.$proy["Direccion"].' </p>';
     echo '</div><div class="m3">
-        <button class="modificar">Modificar</button><br>
-        <button class="eliminar">Eliminar</button>
+    <button class="modificar">Modificar</button><br>
+    <form action="eliminaruser.php", method=post>
+      <input type="radio" name="Eliminar" value='.$proy["idMiembro"].'>
+      <input type="submit" value="Eliminar">
+    </form>
     </div></div>';
   }
 }
@@ -281,8 +305,14 @@ echo '</div></div>
 </div>';
 }
 
-/******************************************************************************/
-function HTMLpublicaciones(){
+/************************************************************************/
+/*
+Esta función muestra las publicaciones que se han realizado en el sistema.
+Falta adaptarla para que sea dinámica y muestre las que haya en el sistema e
+implementar el buscador.
+*/
+
+function HTMLpublicaciones($res){
   echo <<<HTML
   <div class="body_right">
                 <div class="cont_publi">
@@ -349,5 +379,17 @@ function HTMLpublicaciones(){
             </div>
 HTML;
 }
-/******************************************************************************/
+
+/************************************************************************/
+/*
+Esta función muestra las publicaciones que hay en el sistema a través del
+resultado de la query $res y permite añadir más, modificarlas y eliminarlas.
+No ha sido implemtada.
+*/
+function HTMLaddquitpublis($res){
+  echo <<<HTML
+  <div class="body_right"></div>
+HTML;
+}
+
 ?>

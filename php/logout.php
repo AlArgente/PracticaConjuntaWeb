@@ -1,6 +1,7 @@
 <?php
-    session_start();
+    $_SESSION["tipouser"] = "invi";
+    unset($_SESSION['nombre']);
+    unset($_SESSION['tipouser']);
     session_destroy();
-    echo 'Sesión cerrada.';
     header("Location: index.php");
 ?>

@@ -31,6 +31,8 @@ function DB_query($db, $query){
     }else {
       echo "Error: Tabla vacía";
       $tabla = [];
+      echo mysqli_errno($db);
+      echo mysqli_error($db);
     }
     //Liberamos memoria del query
     mysqli_free_result($res);
@@ -41,37 +43,74 @@ function DB_query($db, $query){
   }
   return $tabla;
 }
-
+/************************************************************************/
+/*
+Esta función nos permite realizar una query para consultar los miembros
+que se encuentran almacenados en la base de datos.
+*/
 function DB_miembros($db){
   $query = "SELECT Nombre, Apellidos, Categoria, Direccion from Miembros;";
   $res = DB_query($db,$query);
   HTMLmiembros($res);
 }
-
+/************************************************************************/
+/*
+Esta función nos permite realizar una query para consultar los proyectos
+que se encuentran almacenados en la base de datos.
+*/
 function DB_proyectos($db){
-  $query = "SELECT p.Codigo, p.Titulo as proyecto, p.Descripcion, pu.Titulo as publicacion FROM Proyecto p, PrContienePl pp, Publicacion pu WHERE (p.Codigo=pp.Codigo) AND (pp.DOI=pu.DOI);";
+  $query = "SELECT p.Codigo, p.Titulo as proyecto, p.Descripcion, pu.Titulo as publicacion FROM Proyectos p, PrTienePl pp, Publicaciones pu WHERE (p.Codigo=pp.FK_Codigo) AND (pp.FK_DOI=pu.DOI);";
   //$query = "SELECT p.Codigo, p.Titulo, p.Descripcion FROM Proyecto p, PrContienePl pp, Publicacion pu WHERE (p.Codigo=pp.Codigo) AND (pp.DOI=pu.DOI);";
   $res = DB_query($db,$query);
   HTMLproyectos($res);
 }
-
+/************************************************************************/
+/*
+Esta función al igual que la de proyectos, nos permite saber los Miembrosque
+tenemos almacenados, pero en este caso abre el HTML que nos permite editar,
+añdir y modificar los proyectos.
+*/
 function DB_addquitproyectos($db){
-  $query = "SELECT p.Codigo, p.Titulo, p.Descripcion FROM Proyecto p, PrContienePl pp, Publicacion pu WHERE (p.Codigo=pp.Codigo) AND (pp.DOI=pu.DOI);";
+  $query = "SELECT p.Codigo, p.Titulo, p.Descripcion FROM Proyectos p, PrTienePl pp, Publicaciones pu WHERE (p.Codigo=pp.FK_Codigo) AND (pp.FK_DOI=pu.DOI);";
   $res = DB_query($db,$query);
   HTMLaddquitproy($res);
 }
+/************************************************************************/
+/*
+Estafunción realiza una query sobre la BD para encontras los miembros que tenemos,
+pero esta vez se llama a la función HTML que nos permite editar miembros.
+*/
 
 function DB_editmembers($db){
-  $query = "SELECT Nombre, Apellidos, Categoria, Direccion from Miembros;";
+  $query = "SELECT Nombre, Apellidos, Categoria, Direccion, idMiembro from Miembros;";
   $res = DB_query($db,$query);
   HTMLeditmembers($res);
 }
+/************************************************************************/
+/*
+No ha sido implementada
+*/
+function DB_addquitpublis($db){
+  $query = "SELECT Nombre, Apellidos, Categoria, Direccion from Miembros;";
+  $res = DB_query($db,$query);
+  HTMLaddquitpublis($res);
+}
+/************************************************************************/
+/*
+No ha sido implementada
+*/
+function DB_publicacions($db){
+  $query = "SELECT Nombre, Apellidos, Categoria, Direccion from Miembros;";
+  $res = DB_query($db,$query);
+  HTMLpublicaciones($res);
+}
+
 
 function DB_createDB($db){
 
   //Miembro
   $t_Miembros = "CREATE TABLE IF NOT EXISTS `albertojesus1617`.`Miembros` (
-                `idMiembro` int NOT NULL PRIMARY KEY,
+                `idMiembro` varchar(20) NOT NULL PRIMARY KEY,
                 `Nombre` varchar(45) NOT NULL,
                 `Apellidos` varchar(45) NOT NULL,
                 `Categoria` varchar(45) NOT NULL,
@@ -134,7 +173,7 @@ function DB_createDB($db){
 
   //MRealizaPr (miembro realiza proyectos)
   $t_MRealizaPr= "CREATE TABLE IF NOT EXISTS `albertojesus1617`.`MRealizaPr` (
-                `FK_idMiembro` int NOT NULL,
+                `FK_idMiembro` varchar(20) NOT NULL,
                 `FK_Codigo` int NOT NULL,
                 CONSTRAINT `FK_Realiza_idMiembro` FOREIGN KEY (`FK_idMiembro`)
                 REFERENCES `Miembros`(`idMiembro`),
@@ -318,11 +357,90 @@ function DB_insertT($db,$name,$data){
     echo "Query enviada: $q";
   }
 }
-
+/***************************************************************************/
+/*
+Esta función va a borrar una tabla de la base de datos
+*/
 function DB_deleteT($db,$id){
 
   $sql =" DELETE FROM ";
 
+}
+
+/***************************************************************************/
+/*
+Esta función va a realizar una copia de seguridad de la base de datos (backup)
+sobre el fichero "backup.sql"
+*/
+function DB_backup($db){
+ // Obtener listado de tablas
+ $tablas = array();
+ $result = mysqli_query($db,'SHOW TABLES');
+ while ($row = mysqli_fetch_row($result))
+  $tablas[] = $row[0];
+
+ // Salvar cada tabla
+ $salida = '';
+ foreach ($tablas as $tab) {
+  $result = mysqli_query($db,'SELECT * FROM '.$tab);
+  $num = mysqli_num_fields($result);
+  $salida .= 'DROP TABLE '.$tab.';';
+  $row2 = mysqli_fetch_row(mysqli_query($db,'SHOW CREATE TABLE '.$tab));
+  $salida .= "\n\n".$row2[1].";\n\n"; // row2[0]=nombre de tabla
+  while ($row = mysqli_fetch_row($result)) {
+   $salida .= 'INSERT INTO '.$tab.' VALUES(';
+   for ($j=0; $j<$num; $j++) {
+    $row[$j] = addslashes($row[$j]);
+    $row[$j] = preg_replace("/\n/","\\n",$row[$j]);
+    if (isset($row[$j]))
+     if($row[$j]!=""){
+      $salida .= '"'.$row[$j].'"';
+     }else{
+      $salida .= 'NULL';
+     }
+    else
+     $salida .= '""';
+    if ($j < ($num-1))
+     $salida .= ',';
+   }
+   $salida .= ");\n";
+  }
+  $salida .= "\n\n\n";
+ }
+
+  $f = fopen("backup.sql","w");
+  if ($f){
+    fwrite($f,$salida);
+    fclose($f);
+    echo 'Se ha guardado la base de datos';
+  }
+  else {
+    echo 'No se ha podido abrir el archivo y realizar la copia de seguridad';
+  }
+}
+
+
+/***************************************************************************/
+/*
+Esta función se va a encargar de restaurarla base de datos a partir del fichero
+de backup "backup.sql"
+*/
+function DB_restaurar($db) {
+  $f = "backup.sql";
+  if (file_exists($f)) {
+    mysqli_query($db, 'SET FOREING_KEY_CHECKS=0');
+    $error = '';
+    $sql = file_get_contents($f);
+    $queries = explode(';',$sql);
+    foreach ($queries as $q) {
+      if (!mysqli_query($db,$q))
+        $error .= mysqli_error($db);
+    }
+    mysqli_query($db, 'SET FOREING_KEY_CHECKS=1');
+  }
+  else {
+    echo 'No se ha podido restaurar la BD';
+  }
 }
 
 ?>
